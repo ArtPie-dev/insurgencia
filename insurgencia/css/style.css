@@ -1,0 +1,87 @@
+/* ===== Variáveis: trocar o tema = trocar este bloco ===== */
+:root{
+  --bg:#0e0a1f; --painel:#1a1436; --borda:#3a2f6b;
+  --texto:#ece8ff; --suave:#a9a2d1;
+  --magenta:#ff3d8b; --ciano:#3df2ff;
+  --titulo:"Chakra Petch",system-ui,sans-serif;
+  --corpo:"IBM Plex Sans",system-ui,sans-serif;
+}
+[data-theme="light"]{
+  --bg:#f4f1ff; --painel:#ffffff; --borda:#c9c0f0;
+  --texto:#1b1535; --suave:#575078;
+  --magenta:#c8165f; --ciano:#006f85;
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--texto);font:400 1rem/1.65 var(--corpo);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;width:min(1000px,100% - 2rem);margin-inline:auto;padding-block:2.5rem;outline:none}
+h1,h2,h3{font-family:var(--titulo);line-height:1.15}
+h1{font-size:clamp(2.8rem,11vw,5.8rem);letter-spacing:.02em}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:1rem}
+h3{font-size:1.2rem;margin-bottom:.4rem}
+p{max-width:65ch;margin-bottom:1rem}
+a{color:var(--ciano)}
+:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
+.espaco{margin-top:2.5rem}
+.pular{position:absolute;left:-999px}
+.pular:focus{left:1rem;top:1rem;z-index:9;background:var(--bg);padding:.5rem}
+
+/* ===== Ícones SVG (pasta img) pintados com a cor do texto ===== */
+.ico{display:inline-block;width:1.3em;height:1.3em;background:currentColor;vertical-align:-.25em;margin-right:.45em;
+  -webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}
+.ico-d20{--i:url(../img/d20.svg);color:var(--magenta)}
+.ico-github{--i:url(../img/github.svg)}
+.ico-linkedin{--i:url(../img/linkedin.svg)}
+.ico-email{--i:url(../img/email.svg)}
+
+/* ===== Cabeçalho e menu (mobile primeiro) ===== */
+.topo{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:var(--bg);border-bottom:1px solid var(--borda)}
+.marca{margin-right:auto;font:700 1.3rem var(--titulo);color:var(--texto);text-decoration:none}
+.nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem;background:var(--bg);border-bottom:1px solid var(--borda)}
+.nav.aberto{display:flex}
+.nav a{padding:.6rem 0;color:var(--texto);text-decoration:none;font:600 1rem var(--titulo)}
+.nav a[aria-current]{color:var(--magenta)}
+.tema-btn,.menu-btn{padding:.4rem .8rem;background:none;border:1px solid var(--borda);color:var(--texto);font:600 .9rem var(--titulo);cursor:pointer}
+.tema-btn:hover,.menu-btn:hover{border-color:var(--ciano)}
+
+/* ===== Componentes ===== */
+/* painel com canto cortado: assinatura visual cyberpunk */
+.painel{background:var(--painel);border-left:3px solid var(--magenta);padding:1.2rem 1.4rem;
+  clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%)}
+.grade{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.cartao{display:block;color:var(--texto);text-decoration:none}
+.cartao:hover{border-left-color:var(--ciano)}
+.tag{display:inline-block;margin:0 .4rem .5rem 0;padding:.15rem .7rem;border:1px solid var(--ciano);color:var(--ciano);font-size:.9rem}
+.btn{display:inline-block;padding:.7rem 1.3rem;background:var(--magenta);color:var(--bg);border:1px solid var(--magenta);font:700 1rem var(--titulo);text-decoration:none;cursor:pointer}
+.btn.sec{background:none;color:var(--ciano);border-color:var(--ciano)}
+.links a{color:var(--texto)}
+
+/* ===== Início ===== */
+.hero{display:grid;gap:2.5rem;align-items:center;min-height:60vh}
+.sub{font:600 1.1rem var(--titulo);color:var(--ciano);margin-bottom:.3rem}
+.lead{font-size:1.15rem;margin-block:1rem 1.5rem}
+.dado-area{text-align:center}
+.dado-area p{margin-inline:auto}
+.dado{width:170px;height:190px;border:0;background:var(--magenta);color:var(--bg);font:700 3.2rem var(--titulo);cursor:pointer;
+  clip-path:polygon(50% 0,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%)}
+.dado:focus-visible{background:var(--ciano);outline:none}
+.rolando{animation:girar .6s ease-out}
+@keyframes girar{to{transform:rotate(360deg)}}
+
+/* ===== Formulário ===== */
+label{display:block;margin-top:.8rem;font-weight:500}
+input,textarea{width:100%;padding:.6rem;background:var(--bg);color:var(--texto);border:1px solid var(--borda);font:inherit}
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--magenta)}
+.erro{color:var(--magenta);font-size:.9rem;min-height:1.3rem;margin:.2rem 0 0}
+form .btn{margin-top:.8rem}
+
+footer{padding:1.5rem 1rem;text-align:center;color:var(--suave);border-top:1px solid var(--borda)}
+
+/* ===== Telas maiores ===== */
+@media (min-width:800px){
+  .menu-btn{display:none}
+  .nav{display:flex;position:static;flex-direction:row;gap:1.4rem;padding:0;border:0;background:none}
+  .hero{grid-template-columns:1.3fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){.rolando{animation:none}}

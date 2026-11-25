@@ -1,29 +1,38 @@
 /* ===== Variáveis: trocar o tema = trocar este bloco ===== */
 :root{
-  --bg:#0e0a1f; --painel:#1a1436; --borda:#3a2f6b;
+  --bg:#0e0a1f; --painel:#1a1436; --borda:#3a2f6b; --grade:rgba(255,255,255,.045);
   --texto:#ece8ff; --suave:#a9a2d1;
   --magenta:#ff3d8b; --ciano:#3df2ff;
   --titulo:"Chakra Petch",system-ui,sans-serif;
   --corpo:"IBM Plex Sans",system-ui,sans-serif;
 }
 [data-theme="light"]{
-  --bg:#f4f1ff; --painel:#ffffff; --borda:#c9c0f0;
+  --bg:#f4f1ff; --painel:#ffffff; --borda:#c9c0f0; --grade:rgba(27,21,53,.06);
   --texto:#1b1535; --suave:#575078;
   --magenta:#c8165f; --ciano:#006f85;
 }
 
 /* ===== Base ===== */
 *{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--texto);font:400 1rem/1.65 var(--corpo);min-height:100vh;display:flex;flex-direction:column}
-main{flex:1;width:min(1000px,100% - 2rem);margin-inline:auto;padding-block:2.5rem;outline:none}
+/* fundo: brilhos de neon + grade, só com CSS */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(55rem 28rem at 88% -8%,color-mix(in srgb,var(--magenta) 22%,transparent),transparent),
+  radial-gradient(45rem 28rem at -8% 45%,color-mix(in srgb,var(--ciano) 14%,transparent),transparent),
+  linear-gradient(var(--grade) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(90deg,var(--grade) 1px,transparent 1px) 0 0/48px 48px}
+main{flex:1;width:min(1040px,100% - 2rem);margin-inline:auto}
+section{padding-block:3.5rem;scroll-margin-top:3.5rem}
 h1,h2,h3{font-family:var(--titulo);line-height:1.15}
-h1{font-size:clamp(2.8rem,11vw,5.8rem);letter-spacing:.02em}
-h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:1rem}
+h1{font-size:clamp(3rem,13vw,6.2rem);letter-spacing:.02em;text-shadow:3px 0 var(--magenta),-3px 0 var(--ciano)}
+h2{display:flex;align-items:center;gap:1rem;font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:1.2rem}
+h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--magenta),transparent)}
 h3{font-size:1.2rem;margin-bottom:.4rem}
 p{max-width:65ch;margin-bottom:1rem}
 a{color:var(--ciano)}
 :focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
-.espaco{margin-top:2.5rem}
+.espaco{margin-top:2.2rem}
 .pular{position:absolute;left:-999px}
 .pular:focus{left:1rem;top:1rem;z-index:9;background:var(--bg);padding:.5rem}
 
@@ -36,12 +45,13 @@ a{color:var(--ciano)}
 .ico-email{--i:url(../img/email.svg)}
 
 /* ===== Cabeçalho e menu (mobile primeiro) ===== */
-.topo{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:var(--bg);border-bottom:1px solid var(--borda)}
+.topo{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;
+  background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
 .marca{margin-right:auto;font:700 1.3rem var(--titulo);color:var(--texto);text-decoration:none}
 .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem;background:var(--bg);border-bottom:1px solid var(--borda)}
 .nav.aberto{display:flex}
 .nav a{padding:.6rem 0;color:var(--texto);text-decoration:none;font:600 1rem var(--titulo)}
-.nav a[aria-current]{color:var(--magenta)}
+.nav a:hover,.nav a[aria-current]{color:var(--magenta)}
 .tema-btn,.menu-btn{padding:.4rem .8rem;background:none;border:1px solid var(--borda);color:var(--texto);font:600 .9rem var(--titulo);cursor:pointer}
 .tema-btn:hover,.menu-btn:hover{border-color:var(--ciano)}
 
@@ -49,25 +59,43 @@ a{color:var(--ciano)}
 /* painel com canto cortado: assinatura visual cyberpunk */
 .painel{background:var(--painel);border-left:3px solid var(--magenta);padding:1.2rem 1.4rem;
   clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%)}
-.grade{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.cartao{display:block;color:var(--texto);text-decoration:none}
-.cartao:hover{border-left-color:var(--ciano)}
+.grade{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.cartao{display:block;color:var(--texto);text-decoration:none;transition:border-color .2s,transform .2s}
+.cartao:hover{border-left-color:var(--ciano);transform:translateY(-3px)}
 .tag{display:inline-block;margin:0 .4rem .5rem 0;padding:.15rem .7rem;border:1px solid var(--ciano);color:var(--ciano);font-size:.9rem}
 .btn{display:inline-block;padding:.7rem 1.3rem;background:var(--magenta);color:var(--bg);border:1px solid var(--magenta);font:700 1rem var(--titulo);text-decoration:none;cursor:pointer}
 .btn.sec{background:none;color:var(--ciano);border-color:var(--ciano)}
+.btn:hover{filter:brightness(1.12)}
 .links a{color:var(--texto)}
 
 /* ===== Início ===== */
-.hero{display:grid;gap:2.5rem;align-items:center;min-height:60vh}
-.sub{font:600 1.1rem var(--titulo);color:var(--ciano);margin-bottom:.3rem}
-.lead{font-size:1.15rem;margin-block:1rem 1.5rem}
-.dado-area{text-align:center}
-.dado-area p{margin-inline:auto}
-.dado{width:170px;height:190px;border:0;background:var(--magenta);color:var(--bg);font:700 3.2rem var(--titulo);cursor:pointer;
+.hero{display:grid;gap:2.5rem;align-items:center;min-height:calc(100vh - 3.5rem);padding-block:2.5rem}
+.sub{font:600 1.1rem var(--titulo);color:var(--ciano);margin-bottom:.4rem}
+.nome{font:600 1.4rem var(--titulo);margin:.6rem 0 .2rem}
+.papel{font:600 1.1rem var(--titulo);color:var(--magenta);min-height:1.8rem}
+.cursor{display:inline-block;width:.6ch;height:1.1em;margin-left:2px;background:var(--magenta);vertical-align:-.15em;animation:piscar 1s steps(2) infinite}
+@keyframes piscar{50%{opacity:0}}
+.lead{font-size:1.1rem;margin-block:.8rem 1.4rem}
+.acoes .btn{margin:0 .4rem .6rem 0}
+.redes a{display:inline-block;margin-right:.9rem;color:var(--texto)}
+.redes .ico{width:1.7em;height:1.7em;margin:0}
+.redes a:hover{color:var(--ciano)}
+
+/* ficha de personagem */
+.ficha dl div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--borda)}
+.ficha dt{color:var(--suave)}
+.ficha dd{text-align:right;font-weight:500}
+.dado-area{text-align:center;margin-top:1.2rem}
+.dado-area p{margin:.6rem auto 0}
+.dado{width:130px;height:146px;border:0;background:var(--magenta);color:var(--bg);font:700 2.6rem var(--titulo);cursor:pointer;
   clip-path:polygon(50% 0,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%)}
 .dado:focus-visible{background:var(--ciano);outline:none}
 .rolando{animation:girar .6s ease-out}
 @keyframes girar{to{transform:rotate(360deg)}}
+
+/* ===== Música ===== */
+.musica iframe{display:block;width:100%;border:0;border-radius:12px}
+.musica a{display:inline-block;margin-top:.5rem;font-size:.9rem}
 
 /* ===== Formulário ===== */
 label{display:block;margin-top:.8rem;font-weight:500}
@@ -77,11 +105,16 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--mage
 form .btn{margin-top:.8rem}
 
 footer{padding:1.5rem 1rem;text-align:center;color:var(--suave);border-top:1px solid var(--borda)}
+.subir{position:fixed;right:1rem;bottom:1rem;width:2.6rem;height:2.6rem;display:grid;place-items:center;background:var(--magenta);color:var(--bg);font:700 1.3rem var(--titulo);text-decoration:none}
 
 /* ===== Telas maiores ===== */
-@media (min-width:800px){
+@media (min-width:800px){.hero{grid-template-columns:1.2fr 1fr}}
+@media (min-width:980px){
   .menu-btn{display:none}
-  .nav{display:flex;position:static;flex-direction:row;gap:1.4rem;padding:0;border:0;background:none}
-  .hero{grid-template-columns:1.3fr 1fr}
+  .nav{display:flex;position:static;flex-direction:row;gap:1.1rem;padding:0;border:0;background:none}
 }
-@media (prefers-reduced-motion:reduce){.rolando{animation:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rolando,.cursor{animation:none}
+  .cartao{transition:none}
+}

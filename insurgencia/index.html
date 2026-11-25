@@ -5,7 +5,7 @@
   <!-- viewport: base do design responsivo (mobile) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Insurgência | Arthur Pierre de Aguiar</title>
-  <meta name="description" content="Portfólio de Arthur Pierre de Aguiar: RPG, cyberpunk e tecnologia.">
+  <meta name="description" content="Portfólio de Arthur Pierre de Aguiar: Ciência da Computação, robótica, forense digital e RPG.">
   <link rel="icon" href="img/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,26 +13,171 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a class="pular" href="#conteudo">Ir para o conteúdo</a>
+  <a class="pular" href="#sobre">Ir para o conteúdo</a>
 
-  <!-- Cabeçalho fixo: marca, menu, botão de tema -->
+  <!-- Cabeçalho fixo -->
   <header class="topo">
     <a class="marca" href="#inicio"><span class="ico ico-d20"></span>Insurgência</a>
     <nav id="nav" class="nav" aria-label="Principal">
-      <a href="#inicio">Início</a>
       <a href="#sobre">Sobre</a>
-      <a href="#rpg">A mesa</a>
-      <a href="#projetos">Missões</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#ouvindo">Ouvindo</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#missoes">Missões</a>
+      <a href="#idiomas">Idiomas</a>
       <a href="#contato">Contato</a>
     </nav>
     <button class="tema-btn" type="button">Tema claro</button>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
   </header>
 
-  <!-- As páginas da pasta /pages são carregadas aqui pelo JavaScript -->
-  <main id="conteudo" tabindex="-1"></main>
+  <main>
+    <!-- ===== INÍCIO ===== -->
+    <section id="inicio" class="hero">
+      <div>
+        <p class="sub">Olá, eu sou</p>
+        <h1>Insurgência</h1>
+        <p class="nome">Arthur Pierre de Aguiar</p>
+        <p class="papel"><span id="digitando">Estudante de Ciência da Computação</span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="lead">Formado em Perícia Forense Computacional e Animação Digital, hoje pesquiso robótica para cirurgia. Fora do laboratório, vivo em mundos de RPG.</p>
+        <p class="acoes">
+          <a class="btn" href="#missoes">Ver projetos</a>
+          <a class="btn sec" href="#contato">Entrar em contato</a>
+        </p>
+        <p class="redes">
+          <a href="https://github.com/ArtPie-dev" target="_blank" rel="noopener" aria-label="GitHub"><span class="ico ico-github"></span></a>
+          <a href="https://www.linkedin.com/in/arthur-pierre-de-aguiar-7b756030a" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="ico ico-linkedin"></span></a>
+          <a href="mailto:pinherrepeixe@gmail.com" aria-label="E-mail"><span class="ico ico-email"></span></a>
+        </p>
+      </div>
+      <!-- Ficha de personagem + dado d20 -->
+      <aside class="painel ficha" aria-label="Ficha do personagem">
+        <dl>
+          <div><dt>Classe</dt><dd>Estudante de Ciência da Computação</dd></div>
+          <div><dt>Origem</dt><dd>UDF e Universidade Cruzeiro do Sul</dd></div>
+          <div><dt>Missão atual</dt><dd>IC em robótica cirúrgica</dd></div>
+          <div><dt>Passatempo</dt><dd>RPG</dd></div>
+        </dl>
+        <div class="dado-area">
+          <button id="dado" class="dado" type="button" aria-label="Rolar um d20"><span id="dado-num">20</span></button>
+          <p id="dado-msg" aria-live="polite">Role o dado e teste sua sorte.</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ===== SOBRE ===== -->
+    <section id="sobre">
+      <h2>Sobre mim</h2>
+      <p>Sou aluno de Ciência da Computação na UDF. Antes disso, me formei em Perícia Forense Computacional e em Animação Digital, ambos na Universidade Cruzeiro do Sul. Hoje faço parte de uma Iniciação Científica voltada ao desenvolvimento robótico no campo da medicina cirúrgica.</p>
+      <h3 class="espaco">Formação</h3>
+      <div class="grade">
+        <article class="painel"><span class="tag">Formado</span><h3>Perícia Forense Computacional</h3><p>Universidade Cruzeiro do Sul</p></article>
+        <article class="painel"><span class="tag">Formado</span><h3>Animação Digital</h3><p>Universidade Cruzeiro do Sul</p></article>
+        <article class="painel"><span class="tag">Cursando</span><h3>Ciência da Computação</h3><p>UDF</p></article>
+        <article class="painel"><span class="tag">Em andamento</span><h3>Iniciação Científica</h3><p>Robótica aplicada à medicina cirúrgica</p></article>
+      </div>
+      <h3 class="espaco">Áreas de interesse</h3>
+      <p><span class="tag">Forense digital</span><span class="tag">Robótica cirúrgica</span><span class="tag">Animação</span><span class="tag">Desenvolvimento web</span></p>
+    </section>
+
+    <!-- ===== HOBBIES ===== -->
+    <section id="hobbies">
+      <h2>Hobbies</h2>
+      <div class="grade">
+        <!-- EDITE: troque pelos seus sistemas, cenários e experiências reais de RPG -->
+        <article class="painel">
+          <h3>RPG</h3>
+          <p>Uma boa mesa junta narrativa, estratégia e gente imaginando a mesma cena. Gosto de mundos cyberpunk, onde alta tecnologia e rebeldia andam juntas. Daí vem o nome Insurgência.</p>
+          <span class="tag">Narrativa</span><span class="tag">Estratégia</span><span class="tag">Cyberpunk</span>
+        </article>
+        <article class="painel">
+          <h3>Música</h3>
+          <p>Minha playlist vai do jazz de Persona 5 e do jazz-hop de Nujabes ao indie nacional do Terno Rei e à MPB de Djavan.</p>
+          <span class="tag">Jazz-hop</span><span class="tag">Indie brasileiro</span><span class="tag">MPB</span><span class="tag">Trilhas de jogos</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== OUVINDO NO MOMENTO (players oficiais do Spotify) ===== -->
+    <section id="ouvindo">
+      <h2>Ouvindo no momento</h2>
+      <div class="grade musicas">
+        <div class="musica">
+          <iframe src="https://open.spotify.com/embed/track/2gGMJDtppeGj8s11mXaHKU" title="Beneath the Mask, de Lyn" height="152" loading="lazy" allow="encrypted-media; clipboard-write; fullscreen"></iframe>
+          <a href="https://open.spotify.com/track/2gGMJDtppeGj8s11mXaHKU" target="_blank" rel="noopener">Beneath the Mask · Lyn</a>
+        </div>
+        <div class="musica">
+          <iframe src="https://open.spotify.com/embed/track/4xlpJ99yL9xYQtzG6c3hwk" title="Luv(sic) Part 3, de Nujabes" height="152" loading="lazy" allow="encrypted-media; clipboard-write; fullscreen"></iframe>
+          <a href="https://open.spotify.com/track/4xlpJ99yL9xYQtzG6c3hwk" target="_blank" rel="noopener">Luv(sic) Part 3 · Nujabes</a>
+        </div>
+        <div class="musica">
+          <iframe src="https://open.spotify.com/embed/track/7sdSvGV4jqP4uqFSLxzfKj" title="Yoko, de Terno Rei" height="152" loading="lazy" allow="encrypted-media; clipboard-write; fullscreen"></iframe>
+          <a href="https://open.spotify.com/track/7sdSvGV4jqP4uqFSLxzfKj" target="_blank" rel="noopener">Yoko · Terno Rei</a>
+        </div>
+        <div class="musica">
+          <iframe src="https://open.spotify.com/embed/track/1TX4h6MrIZ0K3r4OOG11WO" title="Flor de Lis, de Djavan" height="152" loading="lazy" allow="encrypted-media; clipboard-write; fullscreen"></iframe>
+          <a href="https://open.spotify.com/track/1TX4h6MrIZ0K3r4OOG11WO" target="_blank" rel="noopener">Flor de Lis · Djavan</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HABILIDADES ===== -->
+    <section id="habilidades">
+      <h2>Habilidades</h2>
+      <!-- EDITE: ajuste ao que você realmente domina -->
+      <div class="grade">
+        <article class="painel"><h3>Forense digital</h3><span class="tag">Investigação digital</span><span class="tag">Análise de evidências</span></article>
+        <article class="painel"><h3>Animação</h3><span class="tag">Animação digital</span></article>
+        <article class="painel"><h3>Robótica</h3><span class="tag">Robótica cirúrgica (IC)</span></article>
+        <article class="painel"><h3>Web</h3><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></article>
+        <article class="painel"><h3>Ferramentas</h3><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span></article>
+      </div>
+    </section>
+
+    <!-- ===== MISSÕES (repositórios do GitHub) ===== -->
+    <section id="missoes">
+      <h2>Missões</h2>
+      <p>Meus projetos públicos, carregados direto do GitHub.</p>
+      <div id="repos" class="grade" aria-live="polite">Carregando missões…</div>
+      <p class="espaco"><a class="btn sec" href="https://github.com/ArtPie-dev?tab=repositories" target="_blank" rel="noopener">Ver tudo no GitHub</a></p>
+    </section>
+
+    <!-- ===== IDIOMAS ===== -->
+    <section id="idiomas">
+      <h2>Idiomas</h2>
+      <!-- EDITE: acrescente outros idiomas e níveis, por exemplo <span class="tag">Inglês (Intermediário)</span> -->
+      <p><span class="tag">Português (Nativo)</span></p>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section id="contato">
+      <h2>Contato</h2>
+      <div class="grade">
+        <form id="form" class="painel" novalidate>
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name">
+          <p class="erro" id="erro-nome"></p>
+          <label for="email">Seu e-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+          <p class="erro" id="erro-email"></p>
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+          <p class="erro" id="erro-mensagem"></p>
+          <button class="btn" type="submit">Enviar mensagem</button>
+          <p id="form-ok" aria-live="polite"></p>
+        </form>
+        <div class="painel links">
+          <h3>Outros canais</h3>
+          <p><a href="https://github.com/ArtPie-dev" target="_blank" rel="noopener"><span class="ico ico-github"></span>GitHub</a></p>
+          <p><a href="https://www.linkedin.com/in/arthur-pierre-de-aguiar-7b756030a" target="_blank" rel="noopener"><span class="ico ico-linkedin"></span>LinkedIn</a></p>
+          <p><a href="mailto:pinherrepeixe@gmail.com"><span class="ico ico-email"></span>pinherrepeixe@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>© 2026 Arthur Pierre de Aguiar</footer>
+  <a class="subir" href="#inicio" aria-label="Voltar ao topo">↑</a>
   <script src="js/main.js"></script>
 </body>
 </html>

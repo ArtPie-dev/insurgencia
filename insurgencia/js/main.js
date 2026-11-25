@@ -58,7 +58,7 @@ const dado = $('#dado'), numero = $('#dado-num'), msg = $('#dado-msg');
 const area = $('main'), ficha = $('.ficha'), inventarioEl = $('#inventario');
 const ITENS = ['Chip de memória', 'Óculos de realidade aumentada', 'Cabo USB-C lendário', 'Mapa da Cidade Neon',
                'Energético experimental', 'Drone mensageiro', 'Chave mestra', 'Dado viciado'];
-let xp = 0, inventario = [], tFalha;
+let xp = 0, rolagens = 0, gatoVisto = false, inventario = [], tFalha;
 
 // aplica uma classe de animação por um tempo (ignorado com "reduzir movimento")
 function animar(alvo, classe, ms){
@@ -90,7 +90,7 @@ function falhaCritica(){       // dado = 1: o "sistema" do site cai e reinicia
   document.body.classList.add('glitch');
   ['> sinal perdido', '> módulos corrompidos', '> rastreando intruso...', '> reiniciando a Insurgência', '> 100% sistema restaurado']
     .forEach((linha, i) => setTimeout(() => { log.textContent += linha + '\n'; }, reduzir ? 0 : i * 700));
-  const fechar = () => { clearTimeout(tFalha); caixa.hidden = true; document.body.classList.remove('glitch'); dado.focus(); };
+  const fechar = () => { clearTimeout(tFalha); caixa.hidden = true; document.body.classList.remove('glitch'); dado.focus(); segredo('bolado'); };
   $('#falha-ok').onclick = fechar;
   tFalha = setTimeout(fechar, 5500);
 }
@@ -131,6 +131,8 @@ dado.addEventListener('click', () => {
   $('#evento-texto').textContent = `${texto} ${extra} +${valor} XP.${nivel > nivelAntes ? ` Você subiu para o nível ${nivel}!` : ''}`;
   $('#evento').hidden = false;
   animar($('#evento'), 'surgir', 400);
+  // segredo: na 10ª rolagem (sem ser falha crítica) aparece o gato
+  if (++rolagens >= 10 && !gatoVisto && valor !== 1){ gatoVisto = true; setTimeout(() => segredo('gato'), 1200); }
 });
 
 /* ---------- Missões: repositórios vindos da API do GitHub ---------- */
@@ -214,3 +216,42 @@ window.onSpotifyIframeApiReady = IFrameAPI => {
     ctrl.addListener('playback_update', e => { tocando = !e.data.isPaused; botaoPlay(); });
   });
 };
+
+/* ---------- Easter eggs: imagens escondidas (veja o README) ---------- */
+console.log('%cInsurgência', 'color:#ff3d8b;font:700 20px sans-serif', 'Existem 5 segredos neste site. Dica: ↑ ↑ ↓ ↓ ← → ← → B A');
+const modal = $('#segredo');
+const SEGREDOS = {
+  ceilandia: { img: 'img/segredos/ceilandia.jpg', alt: 'Placa de boas-vindas pichada, com a palavra Ceilândia', legenda: 'Código secreto desbloqueado. Seja bem-vindo!' },
+  off:       { img: 'img/segredos/off.jpg',       alt: 'Meme de um rapaz de camisa branca: ficando off, cheio dos pensamentos ruins', legenda: 'Modo off ativado. Tema escuro ligado.' },
+  sapo:      { img: 'img/segredos/sapo.jpg',      alt: 'Estátua de um sapo meditando com um incenso', legenda: 'Respire. Compile. Respire.' },
+  gato:      { img: 'img/segredos/gato.jpg',      alt: 'Meme de um gato de gravata em frente a uma fábrica', legenda: '10 rolagens! Segue o jogo, o dia é longo.' },
+  bolado:    { img: 'img/segredos/bolado.jpg',    alt: 'Meme de um rapaz olhando pela janela: boladão com certos bagulhos, mas sem entrar no assunto', legenda: 'Sistema restaurado. Sem entrar no assunto.' }
+};
+function segredo(chave){
+  const s = SEGREDOS[chave];
+  $('#segredo-img').src = s.img; $('#segredo-img').alt = s.alt; $('#segredo-txt').textContent = s.legenda;
+  if (!modal.open) modal.showModal();
+  if (chave === 'off') aplicarTema('dark');
+}
+$('#segredo-fechar').addEventListener('click', () => modal.close());
+modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });   // clicar fora também fecha
+
+// 1) código Konami no teclado
+const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let passo = 0;
+addEventListener('keydown', e => {
+  const tecla = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  passo = tecla === KONAMI[passo] ? passo + 1 : (tecla === KONAMI[0] ? 1 : 0);
+  if (passo === KONAMI.length){ passo = 0; segredo('ceilandia'); }
+});
+// 2) vários cliques seguidos (no máximo 1,5 s entre eles)
+function contar(el, vezes, acao){
+  let cliques = 0, t;
+  el.addEventListener('click', () => {
+    cliques++; clearTimeout(t); t = setTimeout(() => { cliques = 0; }, 1500);
+    if (cliques >= vezes){ cliques = 0; acao(); }
+  });
+}
+contar($('.marca'), 5, () => segredo('off'));            // 5 cliques na marca
+contar($('h1'), 7, () => segredo('ceilandia'));          // 7 cliques no título (alternativa para o celular)
+contar($('#foto-meditacao'), 3, () => segredo('sapo'));  // 3 cliques na foto de meditação

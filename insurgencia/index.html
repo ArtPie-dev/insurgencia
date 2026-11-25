@@ -109,7 +109,7 @@
       <h2><span class="ico ico-camera"></span>Galeria</h2>
       <div class="grade">
         <figure class="painel foto"><img class="f1" src="img/foto-1.jpg" alt="Arthur em selfie, de óculos com corrente, mostrando o braço" loading="lazy"><figcaption>Modo força</figcaption></figure>
-        <figure class="painel foto"><img src="img/foto-2.jpg" alt="Arthur sentado em posição de meditação sobre um poste, em um parque" loading="lazy"><figcaption>Modo meditação</figcaption></figure>
+        <figure class="painel foto"><img id="foto-meditacao" src="img/foto-2.jpg" alt="Arthur sentado em posição de meditação sobre um poste, em um parque" loading="lazy"><figcaption>Modo meditação</figcaption></figure>
       </div>
     </section>
 
@@ -230,6 +230,13 @@
       <button id="falha-ok" class="btn" type="button">Reiniciar sistema</button>
     </div>
   </div>
+
+  <!-- Easter eggs: janela que mostra as imagens secretas -->
+  <dialog id="segredo" aria-labelledby="segredo-txt">
+    <img id="segredo-img" src="" alt="">
+    <p id="segredo-txt"></p>
+    <button id="segredo-fechar" class="btn" type="button">Fechar</button>
+  </dialog>
 
   <script src="js/main.js"></script>
   <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>

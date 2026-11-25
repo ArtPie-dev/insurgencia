@@ -109,7 +109,7 @@ footer{padding:1.5rem 1rem;text-align:center;color:var(--suave);border-top:1px s
 
 /* ===== Telas maiores ===== */
 @media (min-width:800px){.hero{grid-template-columns:1.2fr 1fr}}
-@media (min-width:980px){
+@media (min-width:1120px){
   .menu-btn{display:none}
   .nav{display:flex;position:static;flex-direction:row;gap:1.1rem;padding:0;border:0;background:none}
 }
@@ -118,3 +118,70 @@ footer{padding:1.5rem 1rem;text-align:center;color:var(--suave);border-top:1px s
   .rolando,.cursor{animation:none}
   .cartao{transition:none}
 }
+
+/* ===== Ícones novos (img/*.svg) ===== */
+.ico-user{--i:url(../img/user.svg)} .ico-cap{--i:url(../img/cap.svg)} .ico-cpu{--i:url(../img/cpu.svg)}
+.ico-code{--i:url(../img/code.svg)} .ico-music{--i:url(../img/music.svg)} .ico-globe{--i:url(../img/globe.svg)}
+.ico-terminal{--i:url(../img/terminal.svg)} .ico-search{--i:url(../img/search.svg)} .ico-film{--i:url(../img/film.svg)}
+.ico-play{--i:url(../img/play.svg)} .ico-pause{--i:url(../img/pause.svg)} .ico-camera{--i:url(../img/camera.svg)}
+.ico-star{--i:url(../img/star.svg)} .ico-box{--i:url(../img/box.svg)}
+h2 .ico{width:1.05em;height:1.05em;margin:0;color:var(--magenta)}
+h3 .ico{color:var(--ciano)}
+
+/* ===== Cursor do mouse (img/cursor*.svg) ===== */
+body{cursor:url(../img/cursor.svg) 3 2,auto}
+a,button,.dado{cursor:url(../img/cursor-link.svg) 16 16,pointer}
+input,textarea{cursor:text}
+
+/* ===== Ficha: avatar, experiência, eventos, inventário ===== */
+.avatar{display:block;width:96px;height:96px;margin:0 auto 1rem;border-radius:50%;object-fit:cover;object-position:60% 30%;border:2px solid var(--magenta)}
+.xp{height:8px;margin-top:.8rem;background:var(--bg);border:1px solid var(--borda)}
+.xp span{display:block;height:100%;width:0;background:var(--magenta);transition:width .4s}
+.evento{margin-top:1rem;padding:.8rem 1rem;border:1px dashed var(--ciano)}
+.evento h3{color:var(--ciano);margin-bottom:.2rem}
+.evento p{margin:0}
+.mini{margin-top:1.2rem;font-size:1rem}
+.inv{margin:.3rem 0 0;color:var(--suave)}
+.ficha{transition:background-color .6s}
+.ficha.brilho{background:color-mix(in srgb,var(--ciano) 20%,var(--painel))}
+.surgir{animation:surgir .4s ease-out}
+@keyframes surgir{from{opacity:0;transform:translateY(8px)}}
+
+/* efeitos dos eventos do dado */
+.tremor{animation:tremor .5s}
+@keyframes tremor{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.piscar{animation:piscarMain .6s steps(2) 2}
+@keyframes piscarMain{50%{opacity:.25}}
+.confete{position:fixed;inset:0;z-index:15;overflow:hidden;pointer-events:none}
+.confete i{position:absolute;top:-16px;width:8px;height:14px;animation:cair 2.2s linear forwards}
+@keyframes cair{to{transform:translateY(105vh) rotate(720deg)}}
+
+/* falha crítica (dado = 1) */
+.falha{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:1rem;background:rgba(5,0,15,.95)}
+.falha[hidden]{display:none}
+.falha h2{font-size:clamp(2rem,9vw,4rem);color:#ff3d8b;text-shadow:3px 0 #3df2ff,-3px 0 #ff3d8b}
+.falha h2::after{display:none}
+.falha pre{min-height:9rem;margin:1rem 0;color:#3df2ff;font:500 1rem/1.7 monospace;white-space:pre-wrap}
+.glitch main{animation:glitch .3s steps(2) 4}
+@keyframes glitch{25%{transform:translate(-6px,2px) skewX(4deg);filter:hue-rotate(90deg)}50%{transform:translate(6px,-2px);filter:hue-rotate(-90deg)}}
+
+/* ===== Galeria e idiomas ===== */
+.foto{padding:0}
+.foto img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.foto .f1{object-position:60% 30%}
+.foto figcaption{padding:.7rem 1rem;font:600 1rem var(--titulo)}
+.barra{height:6px;margin-top:.6rem;background:var(--bg);border:1px solid var(--borda)}
+.barra span{display:block;height:100%;background:var(--ciano)}
+
+/* ===== Rádio Insurgência ===== */
+.radio{position:fixed;left:1rem;bottom:1rem;z-index:6;display:flex;flex-direction:column-reverse;gap:.5rem}
+.radio-painel{width:min(330px,calc(100vw - 2rem));padding:.8rem;background:var(--painel);border-left:3px solid var(--magenta)}
+.radio:not(.aberto) .radio-painel{position:fixed;left:-9999px}   /* fechado, mas a música continua tocando */
+.radio-painel p{margin:0 0 .4rem;font-size:.9rem}
+.radio-aviso{margin:.4rem 0 0;color:var(--suave);font-size:.8rem}
+.radio-ctl{display:flex;gap:.5rem;margin-bottom:.6rem}
+.radio-ctl button{min-width:2.6rem;height:2.4rem;background:none;border:1px solid var(--ciano);color:var(--ciano);font:700 1.3rem var(--titulo)}
+.radio-ctl .ico{margin:0}
+#radio iframe{display:block;width:100%;border:0;border-radius:12px}
+
+@media (prefers-reduced-motion:reduce){.tremor,.piscar,.surgir,.glitch main{animation:none}}

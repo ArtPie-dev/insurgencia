@@ -15,12 +15,12 @@
 <body>
   <a class="pular" href="#sobre">Ir para o conteúdo</a>
 
-  <!-- Cabeçalho fixo -->
   <header class="topo">
     <a class="marca" href="#inicio"><span class="ico ico-d20"></span>Insurgência</a>
     <nav id="nav" class="nav" aria-label="Principal">
       <a href="#sobre">Sobre</a>
       <a href="#hobbies">Hobbies</a>
+      <a href="#galeria">Galeria</a>
       <a href="#ouvindo">Ouvindo</a>
       <a href="#habilidades">Habilidades</a>
       <a href="#missoes">Missões</a>
@@ -50,57 +50,73 @@
           <a href="mailto:pinherrepeixe@gmail.com" aria-label="E-mail"><span class="ico ico-email"></span></a>
         </p>
       </div>
-      <!-- Ficha de personagem + dado d20 -->
+
+      <!-- Ficha de personagem + dado d20 com eventos -->
       <aside class="painel ficha" aria-label="Ficha do personagem">
+        <img class="avatar" src="img/foto-1.jpg" alt="Foto de Arthur de óculos com corrente" width="96" height="96">
         <dl>
           <div><dt>Classe</dt><dd>Estudante de Ciência da Computação</dd></div>
-          <div><dt>Origem</dt><dd>UDF e Universidade Cruzeiro do Sul</dd></div>
           <div><dt>Missão atual</dt><dd>IC em robótica cirúrgica</dd></div>
           <div><dt>Passatempo</dt><dd>RPG</dd></div>
+          <div><dt>Nível</dt><dd id="nivel">1</dd></div>
         </dl>
+        <div id="xp" class="xp" role="progressbar" aria-label="Experiência" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0"><span id="xp-barra"></span></div>
         <div class="dado-area">
           <button id="dado" class="dado" type="button" aria-label="Rolar um d20"><span id="dado-num">20</span></button>
-          <p id="dado-msg" aria-live="polite">Role o dado e teste sua sorte.</p>
+          <p id="dado-msg" aria-live="polite">Role o dado: cada resultado muda algo no site. Cuidado com o 1.</p>
         </div>
+        <div id="evento" class="evento" hidden aria-live="polite"><h3 id="evento-titulo"></h3><p id="evento-texto"></p></div>
+        <h3 class="mini"><span class="ico ico-box"></span>Inventário</h3>
+        <p id="inventario" class="inv">Vazio. Tire 16 a 19 para achar itens.</p>
       </aside>
     </section>
 
     <!-- ===== SOBRE ===== -->
     <section id="sobre">
-      <h2>Sobre mim</h2>
+      <h2><span class="ico ico-user"></span>Sobre mim</h2>
       <p>Sou aluno de Ciência da Computação na UDF. Antes disso, me formei em Perícia Forense Computacional e em Animação Digital, ambos na Universidade Cruzeiro do Sul. Hoje faço parte de uma Iniciação Científica voltada ao desenvolvimento robótico no campo da medicina cirúrgica.</p>
-      <h3 class="espaco">Formação</h3>
+      <h3 class="espaco"><span class="ico ico-cap"></span>Formação</h3>
       <div class="grade">
         <article class="painel"><span class="tag">Formado</span><h3>Perícia Forense Computacional</h3><p>Universidade Cruzeiro do Sul</p></article>
         <article class="painel"><span class="tag">Formado</span><h3>Animação Digital</h3><p>Universidade Cruzeiro do Sul</p></article>
         <article class="painel"><span class="tag">Cursando</span><h3>Ciência da Computação</h3><p>UDF</p></article>
         <article class="painel"><span class="tag">Em andamento</span><h3>Iniciação Científica</h3><p>Robótica aplicada à medicina cirúrgica</p></article>
       </div>
-      <h3 class="espaco">Áreas de interesse</h3>
+      <h3 class="espaco"><span class="ico ico-search"></span>Áreas de interesse</h3>
       <p><span class="tag">Forense digital</span><span class="tag">Robótica cirúrgica</span><span class="tag">Animação</span><span class="tag">Desenvolvimento web</span></p>
     </section>
 
     <!-- ===== HOBBIES ===== -->
     <section id="hobbies">
-      <h2>Hobbies</h2>
+      <h2><span class="ico ico-d20"></span>Hobbies</h2>
       <div class="grade">
         <!-- EDITE: troque pelos seus sistemas, cenários e experiências reais de RPG -->
         <article class="painel">
-          <h3>RPG</h3>
+          <h3><span class="ico ico-d20"></span>RPG</h3>
           <p>Uma boa mesa junta narrativa, estratégia e gente imaginando a mesma cena. Gosto de mundos cyberpunk, onde alta tecnologia e rebeldia andam juntas. Daí vem o nome Insurgência.</p>
           <span class="tag">Narrativa</span><span class="tag">Estratégia</span><span class="tag">Cyberpunk</span>
         </article>
         <article class="painel">
-          <h3>Música</h3>
-          <p>Minha playlist vai do jazz de Persona 5 e do jazz-hop de Nujabes ao indie nacional do Terno Rei e à MPB de Djavan.</p>
-          <span class="tag">Jazz-hop</span><span class="tag">Indie brasileiro</span><span class="tag">MPB</span><span class="tag">Trilhas de jogos</span>
+          <h3><span class="ico ico-music"></span>Música</h3>
+          <p>Minha playlist vai do jazz de Persona 5 e do jazz-hop de Nujabes ao indie nacional do Terno Rei, à MPB de Djavan, ao rap de Joey Valence & Brae e ao underground de MF DOOM.</p>
+          <span class="tag">Jazz-hop</span><span class="tag">Indie brasileiro</span><span class="tag">MPB</span><span class="tag">Hip-hop</span><span class="tag">Trilhas de jogos</span>
         </article>
+      </div>
+    </section>
+
+    <!-- ===== GALERIA ===== -->
+    <section id="galeria">
+      <h2><span class="ico ico-camera"></span>Galeria</h2>
+      <div class="grade">
+        <figure class="painel foto"><img class="f1" src="img/foto-1.jpg" alt="Arthur em selfie, de óculos com corrente, mostrando o braço" loading="lazy"><figcaption>Modo força</figcaption></figure>
+        <figure class="painel foto"><img src="img/foto-2.jpg" alt="Arthur sentado em posição de meditação sobre um poste, em um parque" loading="lazy"><figcaption>Modo meditação</figcaption></figure>
       </div>
     </section>
 
     <!-- ===== OUVINDO NO MOMENTO (players oficiais do Spotify) ===== -->
     <section id="ouvindo">
-      <h2>Ouvindo no momento</h2>
+      <h2><span class="ico ico-music"></span>Ouvindo no momento</h2>
+      <p>A Rádio Insurgência (botão no canto da tela) toca estas mesmas músicas como fundo.</p>
       <div class="grade musicas">
         <div class="musica">
           <iframe src="https://open.spotify.com/embed/track/2gGMJDtppeGj8s11mXaHKU" title="Beneath the Mask, de Lyn" height="152" loading="lazy" allow="encrypted-media; clipboard-write; fullscreen"></iframe>
@@ -118,25 +134,34 @@
           <iframe src="https://open.spotify.com/embed/track/1TX4h6MrIZ0K3r4OOG11WO" title="Flor de Lis, de Djavan" height="152" loading="lazy" allow="encrypted-media; clipboard-write; fullscreen"></iframe>
           <a href="https://open.spotify.com/track/1TX4h6MrIZ0K3r4OOG11WO" target="_blank" rel="noopener">Flor de Lis · Djavan</a>
         </div>
+        <div class="musica">
+          <iframe src="https://open.spotify.com/embed/track/2jQ1P0aGT4WkNyJCeoQnb9" title="PUNK TACTICS, de Joey Valence & Brae" height="152" loading="lazy" allow="encrypted-media; clipboard-write; fullscreen"></iframe>
+          <a href="https://open.spotify.com/track/2jQ1P0aGT4WkNyJCeoQnb9" target="_blank" rel="noopener">PUNK TACTICS · Joey Valence & Brae</a>
+        </div>
+        <div class="musica">
+          <iframe src="https://open.spotify.com/embed/track/21O0XXPEWPtePt5RMY93Ob" title="All Caps, de Madvillain e MF DOOM" height="152" loading="lazy" allow="encrypted-media; clipboard-write; fullscreen"></iframe>
+          <a href="https://open.spotify.com/track/21O0XXPEWPtePt5RMY93Ob" target="_blank" rel="noopener">All Caps · MF DOOM (Madvillain)</a>
+        </div>
       </div>
     </section>
 
     <!-- ===== HABILIDADES ===== -->
     <section id="habilidades">
-      <h2>Habilidades</h2>
+      <h2><span class="ico ico-star"></span>Habilidades</h2>
       <!-- EDITE: ajuste ao que você realmente domina -->
       <div class="grade">
-        <article class="painel"><h3>Forense digital</h3><span class="tag">Investigação digital</span><span class="tag">Análise de evidências</span></article>
-        <article class="painel"><h3>Animação</h3><span class="tag">Animação digital</span></article>
-        <article class="painel"><h3>Robótica</h3><span class="tag">Robótica cirúrgica (IC)</span></article>
-        <article class="painel"><h3>Web</h3><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></article>
-        <article class="painel"><h3>Ferramentas</h3><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span></article>
+        <article class="painel"><h3><span class="ico ico-search"></span>Forense digital</h3><span class="tag">Investigação digital</span><span class="tag">Análise de evidências</span><span class="tag">Cadeia de custódia</span><span class="tag">Recuperação de dados</span><span class="tag">Análise de logs</span></article>
+        <article class="painel"><h3><span class="ico ico-film"></span>Animação</h3><span class="tag">Animação digital</span><span class="tag">Storyboard</span><span class="tag">Edição de vídeo</span></article>
+        <article class="painel"><h3><span class="ico ico-cpu"></span>Robótica e pesquisa</h3><span class="tag">Robótica cirúrgica</span><span class="tag">Pesquisa científica</span><span class="tag">Escrita acadêmica</span></article>
+        <article class="painel"><h3><span class="ico ico-code"></span>Web</h3><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Design responsivo</span><span class="tag">Acessibilidade</span></article>
+        <article class="painel"><h3><span class="ico ico-terminal"></span>Ferramentas</h3><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">GitHub Pages</span><span class="tag">VS Code</span></article>
+        <article class="painel"><h3><span class="ico ico-d20"></span>RPG</h3><span class="tag">Narrativa</span><span class="tag">Estratégia</span><span class="tag">Trabalho em equipe</span></article>
       </div>
     </section>
 
     <!-- ===== MISSÕES (repositórios do GitHub) ===== -->
     <section id="missoes">
-      <h2>Missões</h2>
+      <h2><span class="ico ico-code"></span>Missões</h2>
       <p>Meus projetos públicos, carregados direto do GitHub.</p>
       <div id="repos" class="grade" aria-live="polite">Carregando missões…</div>
       <p class="espaco"><a class="btn sec" href="https://github.com/ArtPie-dev?tab=repositories" target="_blank" rel="noopener">Ver tudo no GitHub</a></p>
@@ -144,14 +169,17 @@
 
     <!-- ===== IDIOMAS ===== -->
     <section id="idiomas">
-      <h2>Idiomas</h2>
-      <!-- EDITE: acrescente outros idiomas e níveis, por exemplo <span class="tag">Inglês (Intermediário)</span> -->
-      <p><span class="tag">Português (Nativo)</span></p>
+      <h2><span class="ico ico-globe"></span>Idiomas</h2>
+      <div class="grade">
+        <article class="painel"><h3><span class="ico ico-globe"></span>Português</h3><span class="tag">Nativo</span><div class="barra"><span style="width:100%"></span></div></article>
+        <article class="painel"><h3><span class="ico ico-globe"></span>Inglês</h3><span class="tag">Avançado</span><div class="barra"><span style="width:85%"></span></div></article>
+        <article class="painel"><h3><span class="ico ico-globe"></span>Libras</h3><span class="tag">Básico</span><p>Língua Brasileira de Sinais</p><div class="barra"><span style="width:30%"></span></div></article>
+      </div>
     </section>
 
     <!-- ===== CONTATO ===== -->
     <section id="contato">
-      <h2>Contato</h2>
+      <h2><span class="ico ico-email"></span>Contato</h2>
       <div class="grade">
         <form id="form" class="painel" novalidate>
           <label for="nome">Nome</label>
@@ -178,6 +206,32 @@
 
   <footer>© 2026 Arthur Pierre de Aguiar</footer>
   <a class="subir" href="#inicio" aria-label="Voltar ao topo">↑</a>
+
+  <!-- Rádio Insurgência: música de fundo (player da API oficial do Spotify) -->
+  <aside id="radio" class="radio" aria-label="Rádio Insurgência">
+    <button id="radio-toggle" class="tema-btn" type="button" aria-expanded="false"><span class="ico ico-music"></span>Rádio</button>
+    <div class="radio-painel">
+      <p id="radio-nome">Carregando faixas…</p>
+      <div class="radio-ctl">
+        <button id="r-ant" type="button" aria-label="Música anterior">‹</button>
+        <button id="r-play" type="button" aria-label="Tocar"><span class="ico ico-play"></span></button>
+        <button id="r-prox" type="button" aria-label="Próxima música">›</button>
+      </div>
+      <div id="radio-iframe"></div>
+      <p class="radio-aviso">Sem login no Spotify, toca só um trecho de 30 segundos.</p>
+    </div>
+  </aside>
+
+  <!-- Falha crítica (dado = 1) -->
+  <div id="falha" class="falha" role="alertdialog" aria-labelledby="falha-t" hidden>
+    <div>
+      <h2 id="falha-t">FALHA CRÍTICA</h2>
+      <pre id="falha-log" aria-live="polite"></pre>
+      <button id="falha-ok" class="btn" type="button">Reiniciar sistema</button>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 </body>
 </html>
